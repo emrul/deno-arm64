@@ -14,15 +14,15 @@ RUN unzip protoc-25.0-linux-aarch_64.zip
 ARG DENO_VERSION
 
 RUN git config --global core.symlinks true
-RUN git clone --recurse-submodules https://github.com/denoland/deno.git /deno
+RUN git clone --recurse-submodules https://github.com/emrul/deno.git /deno
 
 WORKDIR /deno
 
-RUN if [ "${DENO_VERSION:0:6}" == "canary" ]; then \
-      git checkout "${DENO_VERSION:7}" ; \
-    else \
-      git checkout "${DENO_VERSION}" ; \
-    fi
+#RUN if [ "${DENO_VERSION:0:6}" == "canary" ]; then \
+#      git checkout "${DENO_VERSION:7}" ; \
+#    else \
+#      git checkout "${DENO_VERSION}" ; \
+#    fi
 
 ADD deno_upgrade_release_url.patch /deno/
 
